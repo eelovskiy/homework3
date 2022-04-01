@@ -46,10 +46,16 @@ public class PointsObserver : MonoBehaviour
         Vector3 distanceToPoint = _observablePoints[pointIndex].transform.position - transform.position;
         Vector3 directionToPoint = distanceToPoint.normalized;
 
+        Collider[] playerCollider = Physics.OverlapSphere(transform.position, 0f, _playerMask);
+        if (playerCollider.Length > 0)
+            playerCollider[0].GetComponent<Player>().Kill();
+
         if (Physics.Raycast(transform.position, directionToPoint, out RaycastHit hit, distanceToPoint.magnitude, _playerMask))
             hit.collider.GetComponent<Player>().Kill();
 
         _fieldOfView.SetActive(Physics.Raycast(transform.position, directionToPoint, distanceToPoint.magnitude, _obstacleMask) == false);
         transform.forward = new Vector3(directionToPoint.x, 0f, directionToPoint.z);
     }
+   
+
 }

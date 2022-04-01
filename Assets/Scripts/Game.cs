@@ -55,6 +55,10 @@ public class Game : MonoBehaviour
 
         var flatExitPosition = new Vector2(_exitFromLevel.transform.position.x, _exitFromLevel.transform.position.z);
         var flatPlayerPosition = new Vector2(_player.transform.position.x, _player.transform.position.z);
+        Debug.Log(flatExitPosition);
+        Debug.Log(flatPlayerPosition);
+
+
         
         if(flatExitPosition == flatPlayerPosition)
             Victory();

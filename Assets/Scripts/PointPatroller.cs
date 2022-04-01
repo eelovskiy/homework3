@@ -5,7 +5,7 @@ public class PointPatroller : MonoBehaviour
     [SerializeField] private Transform[] _patrollingPoints;
     [SerializeField] private float _patrolDelay;
     [SerializeField] private float _step;
-    
+
     private float _timer = 0;
     private int _currentPatrolPointIndex = 0;
 
@@ -29,6 +29,7 @@ public class PointPatroller : MonoBehaviour
             int nextPointIndex = _currentPatrolPointIndex + 1;
 
             if (nextPointIndex >= _patrollingPoints.Length)
+            if (nextPointIndex >= _patrollingPoints.Length)
                 nextPointIndex = 0;
 
             _currentPatrolPointIndex = nextPointIndex;
@@ -41,3 +42,4 @@ public class PointPatroller : MonoBehaviour
         transform.position = new Vector3(_patrollingPoints[pointIndex].position.x, transform.position.y, _patrollingPoints[pointIndex].position.z);
     }
 }
+
